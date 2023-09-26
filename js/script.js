@@ -282,17 +282,29 @@ $(document).ready(function(){
 	popup.hide()
 	$( ".song-element" ).hover(
 	  function() {
-	    //console.log('start')
-	    var song = $(this).attr('track');
-	    var position = $(this).position();
-	    //console.log(position)
+	  	if($(this).hasClass('hidden')){
 
-	    popup.find('h1').text(song);
-	    popup.show()
-	    popup.css({
-	    	"left":position.left + 16,
-	    	"top": position.top - 8
-	    })
+	  	} else {
+	  		//console.log('start')
+		    var song = $(this).attr('track');
+		    var album = $(this).attr('album');
+		    var position = $(this).position();
+		    var albumColor = $(this).css('background-color');
+		    var albumText = popup.find('h2');
+		    console.log(albumColor);
+		    albumText.css({'color': albumColor})
+		    //console.log(position)
+
+		    popup.find('h1').text(song);
+		    albumText.text(album);
+		    popup.show()
+		    popup.css({
+		    	"left":position.left,
+		    	"top": position.top - 39
+		    })
+	  	}
+	    
+
 	  }, function() {
 	    //console.log('done')
 	    popup.hide()
@@ -599,24 +611,3 @@ $(document).ready(function(){
 // 		}
 
 }
-/*
-     FILE ARCHIVED ON 02:27:10 Nov 19, 2021 AND RETRIEVED FROM THE
-     INTERNET ARCHIVE ON 22:06:09 Sep 26, 2023.
-     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
-
-     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
-     SECTION 108(a)(3)).
-*/
-/*
-playback timings (ms):
-  captures_list: 109.027
-  exclusion.robots: 0.104
-  exclusion.robots.policy: 0.093
-  cdx.remote: 0.07
-  esindex: 0.011
-  LoadShardBlock: 67.166 (3)
-  PetaboxLoader3.datanode: 131.553 (5)
-  load_resource: 174.701
-  PetaboxLoader3.resolve: 53.466
-  loaddict: 62.843
-*/
