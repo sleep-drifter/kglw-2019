@@ -1,0 +1,363 @@
+@charset "UTF-8";
+body {
+  background: #000;
+  font-family: 'halyard-text';
+  padding: 0;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+.container {
+  width: 80vw;
+  margin: 0px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+.hans {
+  display: flex;
+  flex-order: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+  .hans h1 {
+    font-family: 'eckmannpsych-medium';
+    font-size: 56px;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: 2px;
+    color: #00ff00; }
+
+label, h1, h2, h3 {
+  color: #8b0404; }
+
+.gamma {
+  display: flex;
+  align-items: flex-start; }
+
+#the-door {
+  width: 500px;
+  height: 500px;
+  position: relative;
+  z-index: -1; }
+  #the-door svg {
+    -webkit-user-select: none;
+    /* Safari 3.1+ */
+    -moz-user-select: none;
+    /* Firefox 2+ */
+    -ms-user-select: none;
+    /* IE 10+ */
+    user-select: none;
+    /* Standard syntax */ }
+    #the-door svg * {
+      -webkit-user-select: none;
+      /* Safari 3.1+ */
+      -moz-user-select: none;
+      /* Firefox 2+ */
+      -ms-user-select: none;
+      /* IE 10+ */
+      user-select: none;
+      /* Standard syntax */ }
+  #the-door.open {
+    animation: tezeta 100s infinite;
+    animation-timing-function: linear; }
+
+@keyframes tezeta {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
+
+#map {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  z-index: -1; }
+
+ul.controls {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap; }
+  ul.controls li {
+    margin: 0;
+    padding: 2px 8px;
+    display: flex;
+    align-items: center;
+    background: #eee;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: 0.2s opacity; }
+    ul.controls li.disabled {
+      opacity: 0.3; }
+    ul.controls li:before {
+      content: '';
+      display: block;
+      width: 10px;
+      height: 10px;
+      background: red;
+      margin-right: 4px; }
+    ul.controls li[album="Infest the Rats' Nest"]:before {
+      background: #de4214; }
+    ul.controls li[album="Fishing for Fishies"]:before {
+      background: #00a6b6; }
+    ul.controls li[album="I'm in Your Mind Fuzz"]:before {
+      background: #45ce41; }
+    ul.controls li[album="Polygondwanaland"]:before {
+      background: #373a33; }
+    ul.controls li[album="Murder of the Universe"]:before {
+      background: #76773e; }
+    ul.controls li[album="Nonagon Infinity"]:before {
+      background: #980f00; }
+    ul.controls li[album="Gumboot Soup"]:before {
+      background: #f2ecca; }
+    ul.controls li[album="12 Bar Bruise"]:before {
+      background: #e60909; }
+    ul.controls li[album="Paper Mâché Dream Balloon"]:before {
+      background: #aeda3c; }
+    ul.controls li[album="Flying Microtonal Banana"]:before {
+      background: #556df3; }
+    ul.controls li[album="Float Along – Fill Your Lungs"]:before {
+      background: #ef9100; }
+    ul.controls li[album="Oddments"]:before {
+      background: #ffcc00; }
+    ul.controls li[album="Quarters!"]:before {
+      background: #a24a96; }
+    ul.controls li[album="n/a"]:before {
+      background: #b8b3f9; }
+    ul.controls li[album="Cover"]:before {
+      background: #b8b3f9; }
+
+.show {
+  display: flex;
+  align-items: center;
+  height: 14px; }
+  .show.dim .city {
+    opacity: 0.5; }
+  .show h1, .show h2, .show h3 {
+    font-size: 12px;
+    margin: 0; }
+  .show .left-label {
+    width: 100px;
+    margin-right: 12px !important;
+    box-sizing: border-box; }
+    .show .left-label .city {
+      text-align: right;
+      transition: 0.2s opacity; }
+  .show .venue, .show .date {
+    display: none; }
+  .show .chart {
+    margin-right: 16px;
+    width: auto;
+    height: 12px;
+    display: flex;
+    align-items: center; }
+    .show .chart .song-element {
+      cursor: crosshair;
+      width: 12px;
+      height: 12px;
+      background: #b8b3f9;
+      border: 1px solid #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-size: cover !important;
+      transition: width 0.2s, height 0.2s, margin 0.2s; }
+      .show .chart .song-element[debut="true"]:after {
+        content: '•';
+        font-size: 18px;
+        line-height: 15px;
+        font-family: sans-serif;
+        position: relative;
+        top: 0px; }
+      .show .chart .song-element.hidden {
+        width: 4px;
+        height: 4px;
+        margin: 0 4px;
+        border-radius: 4px; }
+        .show .chart .song-element.hidden[debut="true"]:after {
+          display: none; }
+      .show .chart .song-element[album="Infest the Rats' Nest"] {
+        background: #de4214; }
+      .show .chart .song-element[album="Fishing for Fishies"] {
+        background: #00a6b6; }
+      .show .chart .song-element[album="I'm in Your Mind Fuzz"] {
+        background: #45ce41; }
+      .show .chart .song-element[album="Polygondwanaland"] {
+        background: #373a33; }
+      .show .chart .song-element[album="Murder of the Universe"] {
+        background: #76773e; }
+      .show .chart .song-element[album="Nonagon Infinity"] {
+        background: #980f00; }
+      .show .chart .song-element[album="Gumboot Soup"] {
+        background: #f2ecca; }
+      .show .chart .song-element[album="12 Bar Bruise"] {
+        background: #e60909; }
+      .show .chart .song-element[album="Paper Mâché Dream Balloon"] {
+        background: #aeda3c; }
+      .show .chart .song-element[album="Flying Microtonal Banana"] {
+        background: #556df3; }
+      .show .chart .song-element[album="Float Along – Fill Your Lungs"] {
+        background: #ef9100; }
+      .show .chart .song-element[album="Oddments"] {
+        background: #ffcc00; }
+      .show .chart .song-element[album="Quarters!"] {
+        background: #a24a96; }
+      .show .chart .song-element[album="n/a"] {
+        background: #b8b3f9; }
+      .show .chart .song-element[album="Cover"] {
+        background: #b8b3f9; }
+      .show .chart .song-element:hover {
+        border-color: white; }
+
+#pop-up {
+  background: #000;
+  display: flex;
+  height: 28px;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  z-index: 99999; }
+  #pop-up h1 {
+    color: #fff;
+    display: inline-block;
+    font-size: 14px;
+    padding: 0px 8px; }
+
+.graph:after {
+  margin-top: 12px;
+  content: '⏺ = Debut';
+  color: #8b0404;
+  font-family: 'halyard-text';
+  font-size: 12px;
+  font-weight: 900;
+  text-align: center;
+  display: block; }
+
+.title {
+  font-size: 84px;
+  text-align: center;
+  color: red;
+  font-family: 'juniper-std';
+  font-family: 'hwt-arabesque';
+  font-family: 'alfarn';
+  font-family: 'eckmannpsych-large';
+  font-family: 'eckmannpsych-medium';
+  -webkit-font-smoothing: antialiased; }
+
+.head-on-pill {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  margin-bottom: 16px; }
+  .head-on-pill .pill {
+    font-size: 16px;
+    padding: 4px 4px 4px 12px;
+    margin-right: 8px;
+    margin-top: 8px;
+    border-radius: 40px;
+    background: #b8b3f9;
+    opacity: 1;
+    color: #000;
+    font-weight: 900;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: 0.2s opacity, padding 0.2s;
+    border: 1px solid #000; }
+    .head-on-pill .pill[album="Infest the Rats' Nest"] {
+      background: #de4214; }
+    .head-on-pill .pill[album="Fishing for Fishies"] {
+      background: #00a6b6; }
+    .head-on-pill .pill[album="I'm in Your Mind Fuzz"] {
+      background: #45ce41; }
+    .head-on-pill .pill[album="Polygondwanaland"] {
+      background: #373a33; }
+    .head-on-pill .pill[album="Murder of the Universe"] {
+      background: #76773e; }
+    .head-on-pill .pill[album="Nonagon Infinity"] {
+      background: #980f00; }
+    .head-on-pill .pill[album="Gumboot Soup"] {
+      background: #f2ecca; }
+    .head-on-pill .pill[album="12 Bar Bruise"] {
+      background: #e60909; }
+    .head-on-pill .pill[album="Paper Mâché Dream Balloon"] {
+      background: #aeda3c; }
+    .head-on-pill .pill[album="Flying Microtonal Banana"] {
+      background: #556df3; }
+    .head-on-pill .pill[album="Float Along – Fill Your Lungs"] {
+      background: #ef9100; }
+    .head-on-pill .pill[album="Oddments"] {
+      background: #ffcc00; }
+    .head-on-pill .pill[album="Quarters!"] {
+      background: #a24a96; }
+    .head-on-pill .pill[album="n/a"] {
+      background: #b8b3f9; }
+    .head-on-pill .pill[album="Cover"] {
+      background: #b8b3f9; }
+    .head-on-pill .pill span:after {
+      content: '🙅‍♂️';
+      margin-left: 4px;
+      font-family: monospace;
+      opacity: 0;
+      color: red;
+      transition: 0.2s opacity, 0.2s margin-right; }
+    .head-on-pill .pill:hover {
+      opacity: 1; }
+      .head-on-pill .pill:hover span:after {
+        opacity: 1; }
+
+.show[order='55'] {
+  display: none; }
+
+#songInput {
+  width: 300px;
+  font-size: 16px;
+  font-family: 'halyard-text';
+  border-radius: 2px;
+  border: 0;
+  padding: 6px 12px;
+  margin-bottom: 20px;
+  margin-top: 16px;
+  border: 1px solid black; }
+  #songInput:focus {
+    outline: none;
+    border: 1px solid red; }
+
+ul[role="listbox"] li {
+  font-family: 'halyard-text';
+  font-size: 16px;
+  padding: 6px 12px; }
+
+/*
+     FILE ARCHIVED ON 02:27:39 Nov 19, 2021 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 22:06:21 Sep 26, 2023.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  captures_list: 142.252
+  exclusion.robots: 0.081
+  exclusion.robots.policy: 0.074
+  cdx.remote: 0.053
+  esindex: 0.008
+  LoadShardBlock: 58.155 (3)
+  PetaboxLoader3.datanode: 123.413 (5)
+  load_resource: 138.585
+  PetaboxLoader3.resolve: 66.663
+  loaddict: 41.513
+*/
