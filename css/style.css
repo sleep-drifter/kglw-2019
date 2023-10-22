@@ -173,7 +173,8 @@ ul.controls {
       align-items: center;
       justify-content: center;
       background-size: cover !important;
-      transition: width 0.2s, height 0.2s, margin 0.2s; }
+      transition: width 0.2s, height 0.2s, margin 0.2s;
+    }
       .show .chart .song-element[debut="true"]:after {
         content: '•';
         font-size: 18px;
@@ -185,7 +186,10 @@ ul.controls {
         width: 4px;
         height: 4px;
         margin: 0 4px;
-        border-radius: 4px; }
+        border-radius: 4px; 
+        
+/*        opacity: 0.1;*/
+      }
         .show .chart .song-element.hidden[debut="true"]:after {
           display: none; }
       .show .chart .song-element[album="Infest the Rats' Nest"] {

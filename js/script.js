@@ -282,9 +282,9 @@ $(document).ready(function(){
 	popup.hide()
 	$( ".song-element" ).hover(
 	  function() {
-	  	if($(this).hasClass('hidden')){
+	  	// if($(this).hasClass('hidden')){
 
-	  	} else {
+	  	// } else {
 	  		//console.log('start')
 		    var song = $(this).attr('track');
 		    var album = $(this).attr('album');
@@ -302,7 +302,7 @@ $(document).ready(function(){
 		    	"left":position.left,
 		    	"top": position.top - 39
 		    })
-	  	}
+	  	//}
 	    
 
 	  }, function() {
@@ -505,10 +505,26 @@ $(document).ready(function(){
 		var count;
 		songFilterArray.push(val);
 		console.log(songFilterArray)
+    console.log(val);
 		count = filterSongs(songFilterArray)
 		createNewPill(val,count);
 		//var count = filterSongs(songFilterArray)
 	}
+
+  $('.song-element').click(function(){
+    var val = $(this).attr('track');
+    var match = songFilterArray.includes(val);
+    if(match){
+      //removePill()
+      var pillToKill = $('.head-on-pill').find('.pill:contains("'+val+'")');
+      // pillToKill.fadeOut(1000);
+      removePill(pillToKill);
+      
+    } else {
+      addToFilters(val);
+    }
+    
+  });
 
 	// remove pill
 	var removePill = function(el){
@@ -521,9 +537,7 @@ $(document).ready(function(){
 			$('.song-element').removeClass('hidden');
 			map.removeLayer('points');
 			map.removeSource('pointSource');  // remove
-			iconsOnMap = false;
-
-			
+			iconsOnMap = false;	
 		} else{
 			filterSongs(songFilterArray);
 		}
